@@ -7,7 +7,10 @@ export const userUnfollowsUser = (follower, followed) =>
     model.deleteOne({ follower, followed });
 
 export const findFollowersOfUser = (followed) =>
-    model.find({ followed }).populate("follower");
+    model.find({followed: followed}).populate("follower");
 
 export const findFollowedUsersByUser = (follower) =>
-    model.find({ follower }).populate("followed");
+    model.find({follower: follower }).populate("followed");
+
+export const findAllFollows = () =>
+    model.find();

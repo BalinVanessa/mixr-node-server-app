@@ -11,8 +11,7 @@ function FavoritesRoutes(app) {
         const favs = await dao.createUserFavDrink(userId, idDrink);
         res.json(favs);
     };
-
-
+    
     const deleteUserFavDrink = async (req, res) => {
         const status = await dao.deleteUserFavDrink(req.params.idDrink);
         res.json(status);
