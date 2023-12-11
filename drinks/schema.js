@@ -7,7 +7,8 @@ const drinksSchema = new mongoose.Schema({
     strInstructions: {type: String, required: true},
     ingredients: [String],
     measures: [String],
-    dateModified: {type: String, required: true}
+    dateModified: {type: String, required: true},
+    mixologist: { type: mongoose.Schema.Types.ObjectId, ref: "users", required: true }
 },
     { collection: "drinks" });
 
