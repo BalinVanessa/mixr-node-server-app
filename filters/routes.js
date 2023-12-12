@@ -13,7 +13,7 @@ function FilterRoutes(app) {
 
     const setFilters = async(req, res) => {
         req.session.filters = req.body;
-        res.json(`set filters to ${req.session.filters.ingredients}`);
+        res.json(`set filters to ${JSON.stringify(req.session.filters)}`);
     }
 
     app.get("/api/filters", getFilters);
