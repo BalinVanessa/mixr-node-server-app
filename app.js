@@ -7,6 +7,7 @@ import DrinksRoutes from "./drinks/routes.js";
 import FavoritesRoutes from "./favorites/routes.js";
 import FollowsRoutes from "./follows/routes.js";
 import IngredientRoutes from "./ingredients/routes.js";
+import FilterRoutes from "./filters/routes.js";
 
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || 'mongodb://127.0.0.1:27017/mixr';
 mongoose.connect(CONNECTION_STRING);
@@ -26,7 +27,7 @@ const sessionOptions = {
     resave: false,
     saveUninitialized: false,
 };
-if (process.env.NODE_ENV !== "development") {
+if (process.env.NODE_ENV !== "development" && process.env.NODE_ENV !== undefined) {
     sessionOptions.proxy = true;
     sessionOptions.cookie = {
         sameSite: "none",
@@ -42,5 +43,6 @@ DrinksRoutes(app);
 FavoritesRoutes(app);
 FollowsRoutes(app);
 IngredientRoutes(app);
+FilterRoutes(app);
 
 app.listen(4000);
