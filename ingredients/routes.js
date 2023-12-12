@@ -11,31 +11,28 @@ function IngredientRoutes(app) {
         const ingredient = await dao.createIngredient(req.body);
         res.json(ingredient);
     };
-    const deleteIngredient = async (req, res) => {
-        const status = await dao.deleteIngredient(req.params.idIngredient);
-        res.json(status);
-    };
     const findAllIngredients = async (req, res) => {
         const ingredients = await dao.findAllIngredients();
         res.json(ingredients);
     };
     const findIngredientById = async (req, res) => {
-        const ingredient = await dao.findIngredientById(req.params.idIngredient);
+        const ingredient = await dao.findIngredientById(req.body);
         res.json(ingredient);
     };
-    const updateIngredient = async (req, res) => {
-        const { idIngredient } = req.params;
-        const status = await dao.updateIngredient(idIngredient, req.body);
-        const currentIngredient = await dao.findIngredientById(idIngredient);
-        req.session['currentIngredient'] = currentIngredient;
-        res.json(status);
-    };
+    const findIngredientByName = async(req, res) => {
+        const ingredient = await dao.findIngredientByName(req.body);
+        res.json(ingredient);
+    }
+    const findTop5IngredientsByPartialName = async (req, res) => {
+        const response = await dao.findTop5IngredientsByPartialName(req.params['partialName']);
+        res.json(response);
+    }
     
     app.post("/api/ingredients", createIngredient);
     app.get("/api/ingredients", findAllIngredients);
-    app.get("/api/ingredients/:idIngredient", findIngredientById);
-    app.put("/api/ingredients/:idIngredient", updateIngredient);
-    app.delete("/api/ingredients/:idIngredient", deleteIngredient);
+    app.get("/api/ingredients/id", findIngredientById);
+    app.get("/api/ingredients/name", findIngredientByName);
+    app.get("/api/ingredients/:partialName", findTop5IngredientsByPartialName);
 }
 
 export default IngredientRoutes;
