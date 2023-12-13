@@ -16,15 +16,10 @@ function IngredientRoutes(app) {
         res.json(ingredients);
     };
     const findIngredientById = async (req, res) => {
-        try {
         const ingredient = await dao.findIngredientById(req.query.id);
         res.json(ingredient);
-        } catch( error) {
-            console.log(req.query.id);
-            console.log(error.message)
-        }
     };
-    const findIngredientByName = async(req, res) => {
+    const findIngredientByName = async (req, res) => {
         const ingredient = await dao.findIngredientByName(req.query.name);
         res.json(ingredient);
     }
@@ -32,7 +27,7 @@ function IngredientRoutes(app) {
         const response = await dao.findTop5IngredientsByPartialName(req.params['partialName']);
         res.json(response);
     }
-    
+
     app.post("/api/ingredients", createIngredient);
     app.get("/api/ingredients", findAllIngredients);
     app.get("/api/ingredients/id", findIngredientById);
