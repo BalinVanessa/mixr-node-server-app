@@ -8,6 +8,7 @@ import FavoritesRoutes from "./favorites/routes.js";
 import FollowsRoutes from "./follows/routes.js";
 import IngredientRoutes from "./ingredients/routes.js";
 import FilterRoutes from "./filters/routes.js";
+import ReviewsRoutes from "./reviews/routes.js";
 
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || 'mongodb://127.0.0.1:27017/mixr';
 mongoose.connect(CONNECTION_STRING);
@@ -44,5 +45,6 @@ FavoritesRoutes(app);
 FollowsRoutes(app);
 IngredientRoutes(app);
 FilterRoutes(app);
+ReviewsRoutes(app);
 
 app.listen(4000);
