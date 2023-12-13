@@ -16,11 +16,16 @@ function IngredientRoutes(app) {
         res.json(ingredients);
     };
     const findIngredientById = async (req, res) => {
-        const ingredient = await dao.findIngredientById(req.body);
+        try {
+        const ingredient = await dao.findIngredientById(req.query.id);
         res.json(ingredient);
+        } catch( error) {
+            console.log(req.query.id);
+            console.log(error.message)
+        }
     };
     const findIngredientByName = async(req, res) => {
-        const ingredient = await dao.findIngredientByName(req.body);
+        const ingredient = await dao.findIngredientByName(req.query.name);
         res.json(ingredient);
     }
     const findTop5IngredientsByPartialName = async (req, res) => {
