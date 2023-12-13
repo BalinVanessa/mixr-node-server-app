@@ -7,7 +7,8 @@ const schema = new mongoose.Schema(
         },
         idDrink: String,
         reviewText: String,
-        numStars: {type: Number, min: 0, max: 5}
+        numStars: {type: Number, min: 0, max: 5},
+        date: Date
     },
     
     {
