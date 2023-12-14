@@ -13,7 +13,7 @@ function FavoritesRoutes(app) {
     };
     
     const deleteUserFavDrink = async (req, res) => {
-        const status = await dao.deleteUserFavDrink(req.params.idDrink);
+        const status = await dao.deleteUserFavDrink(req.params.userId, req.params.idDrink);
         res.json(status);
     };
 
