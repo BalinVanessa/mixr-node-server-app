@@ -12,7 +12,7 @@ function ReviewsRoutes(app) {
     };
 
     const deleteReview = async (req, res) => {
-        const status = await dao.deleteUserReviewDrink(req.params.reviewId);
+        const status = await dao.deleteReview(req.params.reviewId);
         res.json(status);
     };
 
