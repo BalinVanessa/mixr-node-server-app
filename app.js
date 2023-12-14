@@ -9,6 +9,7 @@ import FollowsRoutes from "./follows/routes.js";
 import IngredientRoutes from "./ingredients/routes.js";
 import FilterRoutes from "./filters/routes.js";
 import ReviewsRoutes from "./reviews/routes.js";
+import "dotenv/config"
 
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || 'mongodb://127.0.0.1:27017/mixr';
 mongoose.connect(CONNECTION_STRING);
@@ -22,13 +23,13 @@ app.use(
     })
 );
 
-
 const sessionOptions = {
     secret: "any string",
     resave: false,
     saveUninitialized: false,
 };
 if (process.env.NODE_ENV !== "development" && process.env.NODE_ENV !== undefined) {
+    console.log("In production environment");
     sessionOptions.proxy = true;
     sessionOptions.cookie = {
         sameSite: "none",
