@@ -29,6 +29,7 @@ const sessionOptions = {
     saveUninitialized: false,
 };
 if (process.env.NODE_ENV !== "development" && process.env.NODE_ENV !== undefined) {
+    console.log("In production environment");
     sessionOptions.proxy = true;
     sessionOptions.cookie = {
         sameSite: "none",
