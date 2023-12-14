@@ -35,9 +35,11 @@ if (process.env.NODE_ENV !== "development" && process.env.NODE_ENV !== undefined
         secure: true,
     };
 }
+app.set("trust proxy", 1);
 app.use(session(sessionOptions));
 
 app.use(express.json());
+
 
 UserRoutes(app);
 DrinksRoutes(app);
