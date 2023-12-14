@@ -38,7 +38,7 @@ function ReviewsRoutes(app) {
     const editReview = async (req, res) => {
         const { reviewId } = req.params;
         const status = await dao.editReview(reviewId, req.body);
-        const review = await dao.findReviewById(userId);
+        const review = await dao.findReviewById(reviewId);
         res.json(review);
     }
 
