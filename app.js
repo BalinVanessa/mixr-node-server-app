@@ -9,6 +9,7 @@ import FollowsRoutes from "./follows/routes.js";
 import IngredientRoutes from "./ingredients/routes.js";
 import FilterRoutes from "./filters/routes.js";
 import ReviewsRoutes from "./reviews/routes.js";
+import "dotenv/config"
 
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || 'mongodb://127.0.0.1:27017/mixr';
 mongoose.connect(CONNECTION_STRING);
@@ -21,7 +22,6 @@ app.use(
         origin: process.env.FRONTEND_URL || "http://localhost:3000"
     })
 );
-
 
 const sessionOptions = {
     secret: "any string",
