@@ -19,3 +19,5 @@ export const updateDrink = (idDrink, drink) =>
     model.updateOne({ idDrink: idDrink}, { $set: drink });
 
 export const deleteDrink = (idDrink) => model.deleteOne({ idDrink: idDrink });
+
+export const findDrinksByMixologist = (mixologistId) => model.find({mixologist : mixologistId});

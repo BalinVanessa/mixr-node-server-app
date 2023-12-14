@@ -29,13 +29,20 @@ function DrinksRoutes(app) {
         const drinks = await dao.findAllDrinksByName(name);
         res.json(drinks);
     }
-    
+
+    const findDrinksByMixologist = async (req, res) => {
+        const { mixologistId } = req.params;
+        const drinks = await dao.findDrinksByMixologist(mixologistId);
+        res.json(drinks);
+    }
+
     app.post("/api/drinks", createDrink);
     app.get("/api/drinks", findAllDrinks);
     app.get("/api/drinks/:idDrink", findDrinkById);
     app.get("/api/drinks/name/:drinkName", findDrinksByName);
     app.put("/api/drinks/:idDrink", updateDrink);
     app.delete("/api/drinks/:idDrink", deleteDrink);
+    app.get("/api/drinks/mixologist/:mixologistId", findDrinksByMixologist);
 }
 
 export default DrinksRoutes;
