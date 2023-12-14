@@ -10,7 +10,7 @@ export const findOneDrinkByName = (drinkName) =>
     model.findOne({ strDrink: drinkName });
 
 export const findAllDrinksByName = (drinkName) => {
-    const regex = new RegExp(`^${drinkName}`, 'i');
+    const regex = new RegExp(drinkName, 'i');
     const drinks = model.find({strDrink: regex});
     return drinks;
 }
