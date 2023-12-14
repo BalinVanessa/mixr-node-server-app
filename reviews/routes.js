@@ -7,7 +7,7 @@ function ReviewsRoutes(app) {
     };
 
     const createReview = async (req, res) => {
-        const review = await dao.createUserReviewDrink(req.body);
+        const review = await dao.createReview(req.body);
         res.json(review);
     };
 
@@ -38,7 +38,7 @@ function ReviewsRoutes(app) {
     const editReview = async (req, res) => {
         const { reviewId } = req.params;
         const status = await dao.editReview(reviewId, req.body);
-        const review = await dao.findReviewById(userId);
+        const review = await dao.findReviewById(reviewId);
         res.json(review);
     }
 
